@@ -1,0 +1,7 @@
+name: meltdownspectre
+title: Meltdown and Spectre Exploit Check
+maintainer: Nathan Dines <nath@ndin.es>
+copyright: Nathan Dines
+license: MIT
+summary: Validate status of servers against the Meltdown and Spectre vulnerabilities
+version: 0.1.0
