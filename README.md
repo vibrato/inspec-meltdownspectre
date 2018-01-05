@@ -1,3 +1,4 @@
-# Example InSpec Profile
+# inspec-meltdownspectre
 
-This example shows the implementation of an InSpec [profile](../../docs/profiles.rst).
+A basic inspec profile to check for Meltdown and Spectre vulnerability on Linux
+and Windows
