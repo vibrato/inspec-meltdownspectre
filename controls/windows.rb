@@ -1,10 +1,14 @@
 # encoding: utf-8
 # author: Nathan Dines
 
-control 'Meltdown and Spectre Vulnerability Check' do
+control 'Meltdown and Spectre Vulnerability Check (Windows)' do
   impact 1.0
   title 'Windows Patch status for Meltdown and Spectre vulnerabilities'
   desc 'Validates status of infrastructure against Meltdown and Spectre'
+
+  only_if do
+    os.windows?
+  end
 
   # Microsoft Windows KB IDs
   #
@@ -19,12 +23,10 @@ control 'Meltdown and Spectre Vulnerability Check' do
 
   hotfixes = %w{ KB4056892 KB4056890 KB4056898 KB4056897 }
 
-  if os.windows? then
-    describe.one do
-      hotfixes.each do |hotfix|
-        describe windows_hotfix(hotfix) do
-          it { should be_installed }
-        end
+  describe.one do
+    hotfixes.each do |hotfix|
+      describe windows_hotfix(hotfix) do
+        it { should be_installed }
       end
     end
   end
