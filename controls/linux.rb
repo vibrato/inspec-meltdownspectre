@@ -18,6 +18,6 @@ control 'Meltdown and Spectre Vulnerability Check (Linux)' do
   end
 
   describe file('/proc/cpuinfo') do
-    its('content') { should match /^bugs\s+:.* cpu_insecure / }
+    its('content') { should match /^bugs\s+:.*\bcpu_insecure\b/ }
   end
 end
