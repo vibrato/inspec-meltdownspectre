@@ -30,4 +30,16 @@ control 'Meltdown and Spectre Vulnerability Check (Windows)' do
       end
     end
   end
+
+  describe registry_key('FeatureSettingOverride','HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management') do
+    its('FeatureSettingsOverride') { should eq 0 }
+  end
+
+  describe registry_key('FeatureSettingOverridemask','HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management') do
+    its('FeatureSettingsOverrideMask') { should eq 3 }
+  end
+
+  describe registry_key('MinVmVersionForCpuBasedMitigations'),'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization') do
+    its('MinVmVersionForCpuBasedMitigations') { should eq '1.0'}
+  end
 end
