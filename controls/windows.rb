@@ -39,7 +39,7 @@ control 'Meltdown and Spectre Vulnerability Check (Windows)' do
     its('FeatureSettingsOverrideMask') { should eq 3 }
   end
 
-  describe registry_key('MinVmVersionForCpuBasedMitigations'),'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization') do
+  describe registry_key('MinVmVersionForCpuBasedMitigations','HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization') do
     its('MinVmVersionForCpuBasedMitigations') { should eq '1.0'}
   end
 end
