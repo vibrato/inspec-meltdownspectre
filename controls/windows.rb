@@ -1,4 +1,4 @@
-# encoding: utf-8
+
 # author: Nathan Dines
 
 control 'Meltdown and Spectre Vulnerability Check (Windows)' do
@@ -21,7 +21,7 @@ control 'Meltdown and Spectre Vulnerability Check (Windows)' do
   # Windows Server 2008 R2:                                   KB4056897
   # Windows Server 2008:                                      Not available
 
-  hotfixes = %w{ KB4056892 KB4056890 KB4056898 KB4056897 }
+  hotfixes = %w[KB4056892 KB4056890 KB4056898 KB4056897]
 
   describe.one do
     hotfixes.each do |hotfix|
@@ -31,15 +31,17 @@ control 'Meltdown and Spectre Vulnerability Check (Windows)' do
     end
   end
 
-  describe registry_key('FeatureSettingOverride','HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management') do
+  # rubocop:disable Metrics/LineLength
+  describe registry_key('FeatureSettingOverride', 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management') do
     its('FeatureSettingsOverride') { should eq 0 }
   end
 
-  describe registry_key('FeatureSettingOverridemask','HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management') do
+  describe registry_key('FeatureSettingOverridemask', 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management') do
     its('FeatureSettingsOverrideMask') { should eq 3 }
   end
 
-  describe registry_key('MinVmVersionForCpuBasedMitigations','HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization') do
-    its('MinVmVersionForCpuBasedMitigations') { should eq '1.0'}
+  describe registry_key('MinVmVersionForCpuBasedMitigations', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization') do
+    its('MinVmVersionForCpuBasedMitigations') { should eq '1.0' }
   end
+  # rubocop:enable Metrics/LineLength
 end
