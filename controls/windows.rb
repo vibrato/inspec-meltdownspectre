@@ -13,15 +13,16 @@ control 'Meltdown and Spectre Vulnerability Check (Windows)' do
   # Microsoft Windows KB IDs
   #
   # Source: https://support.microsoft.com/en-us/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution
+  # Source: http://www.catalog.update.microsoft.com/ScopedViewInline.aspx?updateid=b90c6608-1562-42b3-a665-18a5bfce7a22
   #
   # Windows Server, version 1709 (Server Core Installation):  KB4056892
-  # Windows Server 2016:                                      KB4056890
+  # Windows Server 2016:                                      KB4056890 or KB4057142
   # Windows Server 2012 R2:                                   KB4056898
   # Windows Server 2012:                                      Not available
   # Windows Server 2008 R2:                                   KB4056897
   # Windows Server 2008:                                      Not available
 
-  hotfixes = %w[KB4056892 KB4056890 KB4056898 KB4056897]
+  hotfixes = %w[KB4056892 KB4056890 KB4057142 KB4056898 KB4056897]
 
   describe.one do
     hotfixes.each do |hotfix|
